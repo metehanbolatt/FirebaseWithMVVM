@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "797359352005",
+    "project_id": "fir-withmvvm-2bb3c",
+    "storage_bucket": "fir-withmvvm-2bb3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:797359352005:android:4eff741d52e78cb3b228ac",
+        "android_client_info": {
+          "package_name": "com.metehanbolat.firebasewithmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "797359352005-pkkbk5vlf6u679culgq3ml7i2c972hqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.metehanbolat.firebasewithmvvm",
+            "certificate_hash": "a79532605931faab77e69ce9c4df1c1e264674fe"
+          }
+        },
+        {
+          "client_id": "797359352005-svl6hqi8guv0kh3rktlavckg2gf2kptk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8oitTGhSvJgCn4c9fpBh3TmWemTSejCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "797359352005-svl6hqi8guv0kh3rktlavckg2gf2kptk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
