@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.metehanbolat.firebasewithmvvm.R
 import com.metehanbolat.firebasewithmvvm.databinding.FragmentNoteListingBinding
+import com.metehanbolat.firebasewithmvvm.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,9 +37,19 @@ class NoteListingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.note.observe(viewLifecycleOwner) { noteList ->
-            noteList.forEach { note ->
-                Log.e(TAG, note.toString())
+        viewModel.note.observe(viewLifecycleOwner) { noteListState ->
+            when(noteListState) {
+                is UiState.Loading -> {
+                    Log.e(TAG, "Loading")
+                }
+                is UiState.Success -> {
+                    noteListState.data.forEach { note ->
+                        Log.e(TAG, note.toString())
+                    }
+                }
+                is UiState.Failure -> {
+                    Log.e(TAG, noteListState.error.toString())
+                }
             }
         }
     }
