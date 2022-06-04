@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.metehanbolat.firebasewithmvvm.R
 import com.metehanbolat.firebasewithmvvm.databinding.FragmentNoteDetailsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NoteDetailsFragment : Fragment() {
 
     val TAG: String = "NoteDetailsFragment"

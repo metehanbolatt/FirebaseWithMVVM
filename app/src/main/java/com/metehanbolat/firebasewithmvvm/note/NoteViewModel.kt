@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.metehanbolat.firebasewithmvvm.data.model.Note
 import com.metehanbolat.firebasewithmvvm.data.repository.NoteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class NoteViewModel(
+@HiltViewModel
+class NoteViewModel @Inject constructor(
     val repository: NoteRepository
 ): ViewModel() {
 
