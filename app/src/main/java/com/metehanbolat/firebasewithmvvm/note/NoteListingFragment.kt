@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.metehanbolat.firebasewithmvvm.R
 import com.metehanbolat.firebasewithmvvm.databinding.FragmentNoteListingBinding
 
@@ -15,6 +16,8 @@ class NoteListingFragment : Fragment() {
     private var _binding: FragmentNoteListingBinding? = null
     private val binding get() = _binding!!
 
+    val viewModel: NoteViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +25,17 @@ class NoteListingFragment : Fragment() {
         _binding = FragmentNoteListingBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        viewModel.getNotes()
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.note.observe(viewLifecycleOwner) {
+
+        }
     }
 
     override fun onDestroyView() {
