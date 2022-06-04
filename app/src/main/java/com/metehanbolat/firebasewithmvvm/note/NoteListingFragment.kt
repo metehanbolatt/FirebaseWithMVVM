@@ -10,6 +10,9 @@ import androidx.fragment.app.viewModels
 import com.metehanbolat.firebasewithmvvm.R
 import com.metehanbolat.firebasewithmvvm.databinding.FragmentNoteListingBinding
 import com.metehanbolat.firebasewithmvvm.util.UiState
+import com.metehanbolat.firebasewithmvvm.util.hide
+import com.metehanbolat.firebasewithmvvm.util.show
+import com.metehanbolat.firebasewithmvvm.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +24,19 @@ class NoteListingFragment : Fragment() {
     private val binding get() = _binding!!
 
     val viewModel: NoteViewModel by viewModels()
+    val adapter by lazy {
+        NoteListingAdapter(
+            onItemClicked = { position, item ->
+
+            },
+            onEditClicked = { position, item ->
+
+            },
+            onDeleteClicked = { position, item ->
+
+            }
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,18 +53,20 @@ class NoteListingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.recyclerView.adapter = adapter
+
         viewModel.note.observe(viewLifecycleOwner) { noteListState ->
             when(noteListState) {
                 is UiState.Loading -> {
-                    Log.e(TAG, "Loading")
+                    binding.progressBar.show()
                 }
                 is UiState.Success -> {
-                    noteListState.data.forEach { note ->
-                        Log.e(TAG, note.toString())
-                    }
+                    binding.progressBar.hide()
+                    adapter.updateList(noteListState.data.toMutableList())
                 }
                 is UiState.Failure -> {
-                    Log.e(TAG, noteListState.error.toString())
+                    binding.progressBar.hide()
+                    toast(noteListState.error)
                 }
             }
         }
