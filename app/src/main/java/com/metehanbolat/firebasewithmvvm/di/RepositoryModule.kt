@@ -17,7 +17,6 @@ object RepositoryModule {
     @Singleton
     fun provideNoteRepository(
         database: FirebaseFirestore
-    ): NoteRepository {
-        return NoteRepositoryImpl(database = database)
-    }
+    ) =  NoteRepositoryImpl(database = database)
+
 }
